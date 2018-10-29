@@ -51,6 +51,7 @@
   "dependencies": {
     "@automattic/custom-colors-loader": "automattic/custom-colors-loader",
     "@automattic/jetpack-blocks": "6.8.0-beta.1",
+    "@wordpress/api-fetch": "^2.0.0",
     "ansi-colors": "^1.0.1",
     "babel-core": "6.8.0",
     "babel-eslint": "6.1.2",
@@ -137,9 +138,7 @@
     "style-loader": "0.13",
     "uglify-save-license": "^0.4.1",
     "url-loader": "^0.5.7",
-    "webpack": "3.12.0",
-    "whatwg-fetch": "^1.0.0",
-    "@wordpress/api-fetch": "^2.0.0"
+    "webpack": "3.12.0"
   },
   "devDependencies": {
     "babel-register": "^6.8.0",
