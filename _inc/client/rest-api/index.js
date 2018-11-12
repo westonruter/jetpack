@@ -270,15 +270,9 @@ function JetpackRestApiClient( root, nonce ) {
 			.then( parseJsonResponse ),
 
 		fetchJitm: ( message_path, query_url ) => {
-			getParams = {
-				...getParams,
-				body: JSON.stringify( {
-					message_path,
-					query_url
-				} )
-			};
+			const requestUrl = `${ apiRoot }jetpack/v4/jitm?message_path=${ encodeURIComponent( message_path ) }&query=${ encodeURIComponent( query_url ) }`;
 
-			return getRequest( `${ apiRoot }jetpack/v4/jitm`, getParams )
+			return getRequest( requestUrl, getParams )
 				.then( checkStatus )
 				.then( parseJsonResponse );
 		}
