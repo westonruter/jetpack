@@ -3068,7 +3068,10 @@ class Jetpack {
 
 	public static function module_configuration_url( $module ) {
 		$module = Jetpack::get_module_slug( $module );
-		return Jetpack::admin_url( array( 'page' => 'jetpack', 'configure' => $module ) );
+		$default_url =  Jetpack::admin_url() . "#/settings?term=$module";
+		$url = apply_filters( 'jetpack_module_configuration_url_' . $module, $default_url );
+
+		return $url;
 	}
 
 	public static function module_configuration_load( $module, $method ) {
