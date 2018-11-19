@@ -48,23 +48,18 @@ add_action( 'jetpack_modules_loaded', 'custom_css_loaded' );
 
 function custom_css_loaded() {
 	Jetpack::enable_module_configurable( __FILE__ );
-	Jetpack::module_configuration_load( __FILE__, 'custom_css_configuration_load' );
+	add_filter( 'jetpack_module_configuration_url_custom-css', 'custom_css_configuration_load' );
 }
 
-function custom_css_configuration_load() {
-	// Redirect to Core's CSS editor in the customizer if the feature is available.
-	if ( function_exists( 'wp_get_custom_css' ) ) {
-		$configuration_link = Jetpack_Custom_CSS_Enhancements::customizer_link(
-			array(
-				'return_url' => wp_get_referer(),
-			)
-		);
-	} else {
-		$configuration_link = admin_url( 'themes.php?page=editcss#settingsdiv' );
+function custom_css_configuration_load( $default_url ) {
+	if ( ! function_exists( 'wp_get_custom_css' ) ) {
+		return $default_url;
 	}
 
-	wp_safe_redirect( $configuration_link );
-	exit;
+	// Redirect to Core's CSS editor in the customizer if the feature is available.
+	return Jetpack_Custom_CSS_Enhancements::customizer_link(
+		array( 'return_url' => wp_get_referer() )
+	);
 }
 
 jetpack_load_custom_css();
