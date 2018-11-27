@@ -1,7 +1,7 @@
 === Jetpack by WordPress.com ===
 Contributors: automattic, adamkheckler, aduth, akirk, allendav, alternatekev, andy, annezazu, apeatling, azaozz, batmoo, barry, beaulebens, blobaugh, cainm, cena, cfinke, chaselivingston, chellycat, clickysteve, csonnek, danielbachhuber, davoraltman, daniloercoli, designsimply, dllh, drawmyface, dsmart, dzver, ebinnion, eliorivero, enej, eoigal, erania-pinnera, ethitter, gcorne, georgestephanis, gibrown, goldsounds, hew, hugobaeta, hypertextranch, iammattthomas, iandunn, jblz, jasmussen, jeffgolenski, jeherve, jenhooks, jenia, jessefriedman, jgs, jkudish, jmdodd, joanrho, johnjamesjacoby, jshreve, keoshi, koke, kraftbj, lancewillett, lschuyler, macmanx, martinremy, matt, matveb, mattwiebe, maverick3x6, mcsf, mdawaffe, MichaelArestad, migueluy, mikeyarce, mkaz, nancythanki, nickmomrik, obenland, oskosk, pento, professor44, rachelsquirrel, rdcoll, ryancowles, richardmuscat, richardmtl, roccotripaldi, samhotchkiss, scarstocea, sdquirk, stephdau, tmoorewp, tyxla, Viper007Bond, westi, yoavf, zinigor
 Tags: Jetpack, WordPress.com, backup, security, related posts, CDN, speed, anti-spam, social sharing, SEO, video, stats
-Stable tag: 6.7
+Stable tag: 6.8
 Requires at least: 4.8
 Tested up to: 5.0
 
@@ -100,32 +100,26 @@ There are opportunities for developers at all levels to contribute. [Learn more 
 
 == Changelog ==
 
-= 6.8 =
+= 6.9 =
 
-* Release date: November 26, 2018
-* Release post: https://wp.me/p1moTy-cee
+* Release date: January 10, 2018
+* Release post: https://wp.me/p1moTy-cEZ
 
 **Major Enhancements**
 
-* This release introduces the first wave of Jetpack blocks built for the new block editor, available in WordPress 5.0.
+*
 
 **Enhancements**
 
-* General: improve ability to create and troubleshoot Jetpack connections.
-* REST API: new endpoint for testing the Jetpack connection.
+*
 
 **Improved compatibility**
 
-* Akismet: improve caching of all queries for Akismet status.
-* Spellcheck / Grammar: we've made sure the Jetpack feature did not create any error when using the block editor.
-* Twenty Nineteen: ensure compatibility with Jetpack's widgets.
+*
 
 **Bug fixes**
 
-* Asset CDN: do not try to serve assets from non-public versions.
-* Carousel: handle galleries created via the Gallery block in the new block editor.
-* Photon: make sure our image CDN is fully compatible with the block editor.
-
+*
 
 --------
 
