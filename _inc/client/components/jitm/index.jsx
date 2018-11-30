@@ -87,7 +87,7 @@ class Jitm extends Component {
 
 		const cta = get( jitm, 'CTA', null );
 		const ctaMessage = get( cta, 'message', null );
-		const ctaNewWindow = get( cta, 'newWindow', null );
+		// const ctaNewWindow = get( cta, 'newWindow', null );
 		const ctaPrimary = get( cta, 'primary', null );
 
 		const description = get( jitm, 'content.description', null );
