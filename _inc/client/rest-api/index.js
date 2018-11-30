@@ -4,6 +4,7 @@
 require( 'es6-promise' ).polyfill();
 import 'whatwg-fetch';
 import assign from 'lodash/assign';
+import head from 'lodash/head';
 
 /**
  * Helps create new custom error classes to better notify upper layers.
@@ -274,7 +275,8 @@ function JetpackRestApiClient( root, nonce ) {
 
 			return getRequest( requestUrl, getParams )
 				.then( checkStatus )
-				.then( parseJsonResponse );
+				.then( parseJsonResponse )
+				.then( messages => ( head( messages ) ) );
 		}
 	};
 
