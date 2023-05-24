@@ -182,7 +182,6 @@ class Jetpack_Google_Analytics_Legacy {
 		?>
 		ob_start();
 		<script>
-			window.dataLayer = window.dataLayer || [];
 			function gtag() { dataLayer.push( arguments ); }
 			gtag( 'js', new Date() );
 			gtag( 'config', <?php echo wp_json_encode( $tracking_id ); ?> );
