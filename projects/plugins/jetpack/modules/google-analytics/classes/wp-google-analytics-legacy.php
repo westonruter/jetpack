@@ -176,9 +176,10 @@ class Jetpack_Google_Analytics_Legacy {
 				),
 			);
 		}
-		
+
+		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		wp_enqueue_script( 'jetpack-google-analytics', "https://www.googletagmanager.com/gtag/js?id={$tracking_id}", array(), null, array( 'strategy' => 'async' ) );
-		
+
 		?>
 		ob_start();
 		<script>
@@ -196,7 +197,7 @@ class Jetpack_Google_Analytics_Legacy {
 		</script>
 		<?php
 		$data_later_js = str_replace( array( '<script>', '</script>' ), '', ob_get_clean() );
-		wp_add_inline_script( 
+		wp_add_inline_script(
 			'jetpack-google-analytics',
 			$data_later_js,
 			'after'
