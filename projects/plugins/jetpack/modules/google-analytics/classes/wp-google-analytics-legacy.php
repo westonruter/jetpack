@@ -25,7 +25,7 @@ class Jetpack_Google_Analytics_Legacy {
 	public function __construct() {
 		add_filter( 'jetpack_wga_classic_custom_vars', array( $this, 'jetpack_wga_classic_anonymize_ip' ) );
 		add_filter( 'jetpack_wga_classic_custom_vars', array( $this, 'jetpack_wga_classic_track_purchases' ) );
-		add_action( 'wp_head', array( $this, 'insert_code' ), 999 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'insert_code' ), 999 );
 		add_action( 'wp_footer', array( $this, 'jetpack_wga_classic_track_add_to_cart' ) );
 	}
 
@@ -176,12 +176,13 @@ class Jetpack_Google_Analytics_Legacy {
 				),
 			);
 		}
-		// phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedScript
+
+		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+		wp_enqueue_script( 'jetpack-google-analytics', "https://www.googletagmanager.com/gtag/js?id={$tracking_id}", array(), null, array( 'strategy' => 'async' ) );
+
 		?>
-		<!-- Jetpack Google Analytics -->
-		<script async src='https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $tracking_id ); ?>'></script>
+		ob_start();
 		<script>
-			window.dataLayer = window.dataLayer || [];
 			function gtag() { dataLayer.push( arguments ); }
 			gtag( 'js', new Date() );
 			gtag( 'config', <?php echo wp_json_encode( $tracking_id ); ?> );
@@ -194,9 +195,13 @@ class Jetpack_Google_Analytics_Legacy {
 			}
 			?>
 		</script>
-		<!-- End Jetpack Google Analytics -->
 		<?php
-		// phpcs:enable
+		$data_later_js = str_replace( array( '<script>', '</script>' ), '', ob_get_clean() );
+		wp_add_inline_script(
+			'jetpack-google-analytics',
+			$data_later_js,
+			'after'
+		);
 	}
 
 	/**
